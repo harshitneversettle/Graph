@@ -1,0 +1,29 @@
+int spanningTree(int V, vector<vector<int>> adj[])
+    {
+       priority_queue<pair<int,int>  , vector<pair<int,int>> , greater<pair<int,int>>> pq ;
+       pq.push({0,0}) ;      // { weight , node , parent } 
+       vector<bool> visited( V , false ) ;
+       int sum = 0 ;
+       while(!pq.empty()){
+           auto v = pq.top() ;
+           pq.pop() ;
+           int weight = v.first ;
+           int node  = v.second ;
+           if( visited[node] == true ) continue ;
+           visited[node] = true ;      // mst me add hua 
+           sum += weight ;  
+           
+           // now node ke neighbours pr jaao 
+           
+           
+           for( auto x : adj[node]){
+               int neighbour = x[0] ;
+               int neighbour_wt = x[1] ;
+               
+               // check ki kahi vo phele se marked toh hi hai true 
+               if( visited[neighbour] == false ) pq.push({neighbour_wt , neighbour }) ;
+               
+           }
+       }
+       return sum ;
+    }
