@@ -1,0 +1,24 @@
+vector<int> parent;
+vector<int> rank;
+
+int find(int A[],int x){
+       if(A[x] == x)
+        return x;
+        
+        return A[x] = find(A, A[x]); //This is Path compression
+}
+
+void Union(int x, int y) {
+        int x_parent = find(x);
+        int y_parent = find(y);
+ 
+    
+        if(rank[x_parent] > rank[y_parent]) {
+            parent[y_parent] = x_parent;
+        } else if(rank[x_parent] < rank[y_parent]) {
+            parent[x_parent] = y_parent;
+        } else {
+            parent[x_parent] = y_parent;
+            rank[y_parent]++;
+        }
+    }
