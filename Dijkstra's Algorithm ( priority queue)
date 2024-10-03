@@ -11,7 +11,7 @@ vector <int> dijkstra(int V, vector<vector<int>> adj[], int source)
             
             // neighbour wala loop 
             
-            for(auto &x : adj[node]){
+            for(auto x : adj[node]){
                 int newnode = x[0] ;
                 int newdist = x[1] ;
                 
